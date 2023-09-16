@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6d8f27rcerp0"]
+
+[ext_resource type="PackedScene" uid="uid://bapupnpcaccih" path="res://Nodes/bot.tscn" id="1_4jiq3"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Bot" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(535, 266)
+
+[node name="Vertexs" type="Node2D" parent="."]
+
+[node name="vertex1" type="Node2D" parent="Vertexs"]
+
+[node name="vertex2" type="Node2D" parent="Vertexs"]
+position = Vector2(1280, 0)
+
+[node name="vertex3" type="Node2D" parent="Vertexs"]
+position = Vector2(0, 720)
+
+[node name="vertex4" type="Node2D" parent="Vertexs"]
+position = Vector2(1280, 720)

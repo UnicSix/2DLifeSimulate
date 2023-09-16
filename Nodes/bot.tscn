@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bapupnpcaccih"]
+
+[ext_resource type="Script" path="res://Scripts/bot.gd" id="1_j7k7c"]
+[ext_resource type="Texture2D" uid="uid://113uq1cmwg2o" path="res://icon.svg" id="1_jv3uf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5q1rs"]
+radius = 221.111
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hw4h"]
+radius = 62.0322
+
+[node name="Bot" type="CharacterBody2D"]
+script = ExtResource("1_j7k7c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5q1rs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jv3uf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3hw4h")
+debug_color = Color(0.588235, 0.54902, 0.0862745, 0.419608)
+
+[node name="MoveDircTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="MoveDircTimer" to="." method="_on_move_dirc_timer_timeout"]
