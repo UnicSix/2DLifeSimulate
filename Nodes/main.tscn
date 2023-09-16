@@ -19,3 +19,54 @@ position = Vector2(0, 720)
 
 [node name="vertex4" type="Node2D" parent="Vertexs"]
 position = Vector2(1280, 720)
+
+[node name="Bot2" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(801, 500)
+
+[node name="Bot3" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(168, 318)
+
+[node name="Bot4" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(359, 500)
+
+[node name="Bot5" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(1031, 222)
+
+[node name="Bot6" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(1043, 525)
+
+[node name="Bot7" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(523, 537)
+
+[node name="Bot8" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(728, 245)
+
+[node name="Bot9" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(293, 174)
+
+[node name="Bot10" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(162, 561)
+
+[node name="Bot11" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(349, 360)
+
+[node name="Bot12" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(674, 607)
+
+[node name="Bot13" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(893, 359)
+
+[node name="Bot14" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(604, 404)
+
+[node name="Bot15" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(347, 621)
+
+[node name="Bot16" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(876, 597)
+
+[node name="Bot17" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(1095, 357)
+
+[node name="Bot18" parent="." instance=ExtResource("1_4jiq3")]
+position = Vector2(851, 119)
