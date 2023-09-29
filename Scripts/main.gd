@@ -24,7 +24,7 @@ func _ready():
 		for j in rdBoundy:
 			var py = player.instantiate()
 			py.position = valid_pos[i][j]
-			py.visible = false
+			# py.visible = false
 			call_deferred("add_child", py)
 
 

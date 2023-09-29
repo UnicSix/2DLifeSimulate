@@ -1,24 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dopl3cxykd56l"]
+[gd_scene load_steps=4 format=3 uid="uid://jfeihc30hytn"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8m7ve"]
 [ext_resource type="Texture2D" uid="uid://bia16l26rlypu" path="res://rock.png" id="1_q8mlo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hi1ya"]
-size = Vector2(130, 128)
+size = Vector2(44, 48)
 
-[node name="Dtct_stat" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j827o"]
+size = Vector2(240, 20)
+
+[node name="Dtct_stat" type="Sprite2D"]
 scale = Vector2(0.25, 0.25)
-script = ExtResource("1_8m7ve")
-
-[node name="Receiver" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hi1ya")
-
-[node name="player_sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_q8mlo")
 
-[node name="Send_stat" type="Area2D" parent="."]
+[node name="rcv" type="Area2D" parent="."]
 
-[node name="Publisher" type="CollisionShape2D" parent="Send_stat"]
+[node name="rcv_col" type="CollisionShape2D" parent="rcv"]
 shape = SubResource("RectangleShape2D_hi1ya")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="pub" type="Area2D" parent="."]
+
+[node name="pub_col1" type="CollisionShape2D" parent="pub"]
+shape = SubResource("RectangleShape2D_j827o")
+
+[node name="pub_col2" type="CollisionShape2D" parent="pub"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_j827o")
