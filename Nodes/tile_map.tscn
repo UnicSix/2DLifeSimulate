@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg30ux5wg62rn"]
+
+[ext_resource type="Texture2D" uid="uid://duhhkl2al02sm" path="res://background-Sheet.png" id="1_01dwt"]
+[ext_resource type="Texture2D" uid="uid://bia16l26rlypu" path="res://rock.png" id="2_eonbb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1g5ls"]
+texture = ExtResource("1_01dwt")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmv4s"]
+texture = ExtResource("2_eonbb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_h7toq"]
+tile_size = Vector2i(32, 32)
+sources/2 = SubResource("TileSetAtlasSource_1g5ls")
+sources/3 = SubResource("TileSetAtlasSource_gmv4s")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_h7toq")
+cell_quadrant_size = 4
+format = 2
+layer_1/name = ""
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
