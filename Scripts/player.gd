@@ -27,11 +27,10 @@ func _process(_delta):
 
 
 
-func _on_area_entered(area):
-	if area.isAlive:
-		botInArea+=1
-		print(botInArea)
+func _on_area_entered(_area):
+	botInArea+=1
+	print(botInArea)
 
 
-func _on_area_exited(area):
+func _on_area_exited(_area):
 	pass # Replace with function body.
