@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 10.0
+const SPEED = 30.0
 var rd = RandomNumberGenerator.new()
 var botInArea=0
 var isAlive = true
