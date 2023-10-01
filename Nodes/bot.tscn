@@ -14,14 +14,20 @@ radius = 62.0322
 font_size = 25
 font_color = Color(0.333333, 0.678431, 0.596078, 1)
 
-[node name="Bot" type="CharacterBody2D"]
+[node name="Bot" type="Node2D"]
 scale = Vector2(0.7, 0.7)
+
+[node name="pub" type="Area2D" parent="."]
+
+[node name="col1" type="CollisionShape2D" parent="pub"]
+shape = SubResource("CircleShape2D_5q1rs")
+
+[node name="rcv" type="Area2D" parent="."]
 script = ExtResource("1_t2igb")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_5q1rs")
+[node name="col2" type="CollisionShape2D" parent="rcv"]
+shape = SubResource("CircleShape2D_3hw4h")
+debug_color = Color(0.588235, 0.54902, 0.0862745, 0.419608)
 
 [node name="Alive" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -31,10 +37,6 @@ texture = ExtResource("2_6kiwb")
 visible = false
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("3_jmme2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3hw4h")
-debug_color = Color(0.588235, 0.54902, 0.0862745, 0.419608)
 
 [node name="MoveDircTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -46,3 +48,7 @@ offset_top = -88.5714
 offset_right = 24.2857
 offset_bottom = -53.5714
 label_settings = SubResource("LabelSettings_mflda")
+
+[connection signal="area_entered" from="rcv" to="rcv" method="_on_area_entered"]
+[connection signal="area_exited" from="rcv" to="rcv" method="_on_area_exited"]
+[connection signal="input_event" from="rcv" to="rcv" method="_on_input_event"]

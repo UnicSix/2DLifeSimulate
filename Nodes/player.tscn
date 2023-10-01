@@ -37,6 +37,7 @@ debug_color = Color(0.207843, 0.603922, 0.596078, 0.419608)
 
 [connection signal="area_entered" from="rcv" to="rcv" method="_on_area_entered"]
 [connection signal="area_exited" from="rcv" to="rcv" method="_on_area_exited"]
+[connection signal="input_event" from="rcv" to="rcv" method="_on_input_event"]
 [connection signal="mouse_entered" from="rcv" to="rcv" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="rcv" to="rcv" method="_on_mouse_exited"]
 [connection signal="timeout" from="rcv/Timer" to="rcv" method="_on_timer_timeout"]
