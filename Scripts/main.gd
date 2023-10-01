@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player = preload("res://Nodes/player.tscn")
+@onready var test_scene = "res://Nodes/test_scene.tscn"
 var rd = RandomNumberGenerator.new()
 var pos_tran = Transform2D()
 var rdBoundx = (WIDTH_PX / GRID_UNIT)-1
@@ -13,7 +14,6 @@ var valid_pos = [[]]
 var init_state = [[]]
 var isSpawned = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	isSpawned=true
 	for i in rdBoundx:
@@ -21,27 +21,21 @@ func _ready():
 		init_state.append([])
 		for j in rdBoundy:
 			valid_pos[i].append(Vector2((i+1)*GRID_UNIT, (j+1)*GRID_UNIT))
-			# init_state[i].append(randi_range(0,1))
-			#self.get_parent().call_deferred("add_child", py)
+			init_state[i].append(randi_range(0,5))
 	for i in rdBoundx:
 		for j in rdBoundy:
 			var py = player.instantiate()
 			py.position = valid_pos[i][j]
-			# py.get_node("pub/pub_col1").disabled = true
-			# py.visible = false
+			if init_state[i][j] == 0:
+				py.get_node("pub/pub_col1").set_deferred('disabled', true)
+			else:
+				py.get_node("pub/pub_col1").set_deferred('disabled', false)
+			py.get_node('rcv/Sprite2D').visible = not init_state[i][j] 
 			call_deferred("add_child", py)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
 func _unhandled_input(_event):
-	if Input.is_action_pressed("left click") and not isSpawned:
-		isSpawned = true
-		for i in rdBoundx:
-			for j in rdBoundy:
-				var py = player.instantiate()
-				py.position = valid_pos[i][j]
-				call_deferred("add_child", py)
+	if Input.is_action_just_pressed('restart'):
+		get_tree().change_scene_to_file(test_scene)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://do87gs3pfdsfj"]
+
+[ext_resource type="PackedScene" uid="uid://bapupnpcaccih" path="res://Nodes/bot.tscn" id="1_tcevr"]
+
+[node name="test_scene" type="Node2D"]
+
+[node name="Bot" parent="." instance=ExtResource("1_tcevr")]
+position = Vector2(472, 257)
+
+[node name="Bot2" parent="." instance=ExtResource("1_tcevr")]
+position = Vector2(646, 255)

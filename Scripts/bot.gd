@@ -11,16 +11,16 @@ func _ready():
 	velocity.y = rd.randf_range(-5.0, 5.0)*SPEED 
 
 
-
 func _physics_process(_delta):
-	draw_circle(position, $Area2D/CollisionShape2D.shape.radius,
-		Color(1,1,1,0.2))
 	$botNum.text = str(botInArea)
 	if not isAlive:
 		velocity = Vector2.ZERO
 	_life_span()
 	move_and_slide()
 
+func _draw():
+	draw_circle(position, $Area2D/CollisionShape2D.shape.radius,
+		Color(1,1,1,0.2))
 
 func _on_move_dirc_timer_timeout():
 	velocity.x = rd.randf_range(-5.0, 5.0)*SPEED 
