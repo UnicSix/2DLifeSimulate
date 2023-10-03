@@ -26,16 +26,19 @@ func _ready():
 		for j in rdBoundy:
 			var py = player.instantiate()
 			py.position = valid_pos[i][j]
-			if init_state[i][j] == 0:
-				py.get_node("pub/pub_col1").set_deferred('disabled', true)
-			else:
-				py.get_node("pub/pub_col1").set_deferred('disabled', false)
-			py.get_node('rcv/Sprite2D').visible = not init_state[i][j] 
 			call_deferred("add_child", py)
+			py.get_node('rcv/Sprite2D').visible = false
+			py.get_node("pub/pub_col1").set_deferred('disabled', true)
+			# if init_state[i][j] == 0:
+			# 	py.get_node("pub/pub_col1").set_deferred('disabled', true)
+			# else:
+			# 	py.get_node("pub/pub_col1").set_deferred('disabled', false)
 
 func _process(_delta):
 	pass
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed('restart'):
+		get_tree().reload_current_scene()
+	elif Input.is_action_just_pressed('test'):
 		get_tree().change_scene_to_file(test_scene)

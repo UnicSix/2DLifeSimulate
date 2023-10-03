@@ -4,7 +4,7 @@ var botInArea
 var pub_col
 var rcv_col
 func _ready():
-	botInArea = 0 
+	botInArea = -1
 	pub_col = self.get_parent().get_node('pub/col1')
 	rcv_col = self.get_parent().get_node('rcv/col2')
 
@@ -36,6 +36,11 @@ func _on_area_entered(_area:Area2D):
 
 func _on_input_event(viewport:Node, event:InputEvent, shape_idx:int):
 	if Input.is_action_just_pressed('left click'):
-		pub_col.set_deferred('disabled', true)
-	elif Input.is_action_just_pressed('right click'):
 		pub_col.set_deferred('disabled', false)
+		get_parent().get_node('Alive').visible = true
+		if pub_col.disabled:
+			botInArea-=1
+	elif Input.is_action_just_pressed('right click'):
+		get_parent().get_node('Alive').visible = false
+		pub_col.set_deferred('disabled', true)
+		botInArea+=1
