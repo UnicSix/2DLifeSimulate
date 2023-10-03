@@ -10,7 +10,7 @@ size = Vector2(95.7203, 104.139)
 size = Vector2(216, 212)
 
 [node name="Dtct_stat" type="Node2D"]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.125, 0.125)
 
 [node name="rcv" type="Area2D" parent="."]
 script = ExtResource("1_8m7ve")
