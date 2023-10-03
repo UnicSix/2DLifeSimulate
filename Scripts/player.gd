@@ -19,6 +19,9 @@ func _process(_delta):
 func _unhandled_input(_event):
 	if Input.is_action_pressed("start"):
 		$Timer.start()
+	if Input.is_action_just_pressed("clear"):
+		pub_col.set_deferred('disabled', true)
+		py_sprite.set_deferred('visible', false)
 	
 func _on_timer_timeout():
 	# isAlive = not pub_col.get_deferred('disabled')

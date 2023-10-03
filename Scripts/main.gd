@@ -21,18 +21,20 @@ func _ready():
 		init_state.append([])
 		for j in rdBoundy:
 			valid_pos[i].append(Vector2((i+1)*GRID_UNIT, (j+1)*GRID_UNIT))
-			init_state[i].append(randi_range(0,5))
+			init_state[i].append(randi_range(0,1))
 	for i in rdBoundx:
 		for j in rdBoundy:
 			var py = player.instantiate()
 			py.position = valid_pos[i][j]
 			call_deferred("add_child", py)
-			py.get_node('rcv/Sprite2D').visible = false
-			py.get_node("pub/pub_col1").set_deferred('disabled', true)
-			# if init_state[i][j] == 0:
-			# 	py.get_node("pub/pub_col1").set_deferred('disabled', true)
-			# else:
-			# 	py.get_node("pub/pub_col1").set_deferred('disabled', false)
+			# py.get_node('rcv/Sprite2D').visible = false
+			# py.get_node("pub/pub_col1").set_deferred('disabled', true)
+
+			if init_state[i][j] == 0:
+				py.get_node("pub/pub_col1").set_deferred('disabled', true)
+				py.get_node('rcv/Sprite2D').visible = false
+			else:
+				py.get_node("pub/pub_col1").set_deferred('disabled', false)
 
 func _process(_delta):
 	pass
@@ -42,3 +44,5 @@ func _unhandled_input(_event):
 		get_tree().reload_current_scene()
 	elif Input.is_action_just_pressed('test'):
 		get_tree().change_scene_to_file(test_scene)
+	elif Input.is_action_just_pressed('quit'):
+		get_tree().quit()
