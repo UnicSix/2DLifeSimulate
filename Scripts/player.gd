@@ -27,8 +27,11 @@ func _process(_delta):
 		
 	
 func _unhandled_input(_event):
-	if Input.is_action_pressed("start"):
-		$Timer.start()
+	if Input.is_action_just_pressed("start"):
+		if $Timer.is_stopped():
+			$Timer.start()
+		else:
+			$Timer.stop()
 	if Input.is_action_just_pressed("clear"):
 		pub_col.set_deferred('disabled', true)
 		py_sprite.set_deferred('visible', false)
@@ -60,14 +63,13 @@ func _on_area_exited(_area):
 		botInArea-=1
 
 func _on_input_event(_viewport:Node, _event:InputEvent, _shape_idx:int):
-	pass
-	# if Input.is_action_just_pressed("right click"):	
-	# 	pub_col.set_deferred('disabled', true)
-	# 	py_sprite.set_deferred('visible', false)
-	# elif Input.is_action_just_pressed("left click"):
-	# 	print(botInArea)		
-	# 	pub_col.set_deferred('disabled', false)
-	# 	py_sprite.set_deferred('visible', true)
+	# pass
+	if Input.is_action_just_pressed("right click"):	
+		pub_col.set_deferred('disabled', true)
+		py_sprite.set_deferred('visible', false)
+	elif Input.is_action_just_pressed("left click"):
+		pub_col.set_deferred('disabled', false)
+		py_sprite.set_deferred('visible', true)
 
 func _on_mouse_entered():
 	if isHoldingL:

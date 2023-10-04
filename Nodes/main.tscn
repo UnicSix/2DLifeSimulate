@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6d8f27rcerp0"]
+[gd_scene load_steps=6 format=3 uid="uid://b6d8f27rcerp0"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_lhyj7"]
 [ext_resource type="PackedScene" path="res://Nodes/tile_map.tscn" id="1_pwd30"]
+[ext_resource type="FontFile" uid="uid://bbgubtrx34j88" path="res://Fonts/YoungSerif-Regular.ttf" id="2_5j8fx"]
+[ext_resource type="Script" path="res://Scripts/UIControl.gd" id="3_gqpnv"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_r2hht"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_lhyj7")
@@ -13,3 +17,38 @@ layer_0/tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 0, 131072, 2, 0, 196608,
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_gqpnv")
+
+[node name="MenuButton" type="MenuButton" parent="Control"]
+top_level = true
+z_as_relative = false
+layout_mode = 0
+offset_left = 43.0
+offset_top = 33.0
+offset_right = 197.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_5j8fx")
+theme_override_font_sizes/font_size = 30
+button_group = SubResource("ButtonGroup_r2hht")
+text = "Setting"
+alignment = 0
+switch_on_hover = true
+
+[node name="Quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 104.0
+offset_right = 129.0
+offset_bottom = 135.0
+text = "Quit"
+
+[connection signal="button_up" from="Control/Quit" to="Control" method="_on_quit_button_up"]

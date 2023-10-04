@@ -1,23 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://jfeihc30hytn"]
+[gd_scene load_steps=7 format=3 uid="uid://jfeihc30hytn"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8m7ve"]
-[ext_resource type="Texture2D" uid="uid://cff52vfekj3vh" path="res://icon_monochrome_light.svg" id="2_718c8"]
+[ext_resource type="Texture2D" uid="uid://wh5aosa756am" path="res://Sprites/nyan_sheet.png" id="2_l3ruh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hi1ya"]
 size = Vector2(95.7203, 104.139)
+
+[sub_resource type="Animation" id="Animation_i1x1x"]
+resource_name = "run"
+length = 0.3
+loop_mode = 1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8o14m"]
+_data = {
+"run": SubResource("Animation_i1x1x")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j827o"]
 size = Vector2(216, 212)
 
 [node name="Dtct_stat" type="Node2D"]
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.25, 0.25)
 
 [node name="rcv" type="Area2D" parent="."]
 script = ExtResource("1_8m7ve")
 
 [node name="Sprite2D" type="Sprite2D" parent="rcv"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_718c8")
+scale = Vector2(0.685, 0.685)
+texture = ExtResource("2_l3ruh")
+hframes = 5
+frame = 2
 
 [node name="rcv_col" type="CollisionShape2D" parent="rcv"]
 position = Vector2(-0.0114354, 0.0698483)
@@ -27,6 +52,12 @@ debug_color = Color(0.698039, 0.301961, 0.968627, 0.419608)
 
 [node name="Timer" type="Timer" parent="rcv"]
 wait_time = 0.15
+
+[node name="player_anim" type="AnimationPlayer" parent="rcv"]
+autoplay = "run"
+libraries = {
+"": SubResource("AnimationLibrary_8o14m")
+}
 
 [node name="pub" type="Area2D" parent="."]
 monitoring = false
